@@ -25,7 +25,7 @@ int main(int argc,char**argv){
 	}
 	//与最优装载类似，我们也将性价比进行排序
 	for(i=0;i<10;i++){
-		for(j=0;j<10-i;j++){
+		for(j=0;j<10-i-1;j++){
 			if(p[j]<p[j+1]){
 				float temp=p[j];
 				p[j]=p[j+1];
