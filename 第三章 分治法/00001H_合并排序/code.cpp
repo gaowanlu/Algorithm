@@ -28,6 +28,7 @@ void MergeFunction(struct Data*list,int low,int middle,int high){
 	for(i=low;i<=high;i++){
 		list[i]=space[i-low];
 	} 
+	free(space);
 }
 void MergeSort(struct Data*list,int low,int high){
 	if(low>=high){//=说明只有一个元素不用排序 
