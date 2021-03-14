@@ -143,6 +143,31 @@ void PrintResult(double **W,double **C,int **S,int *N){
     }
 }
 
+void freeP(double*P,int*N){
+    free(P);
+}
+void freeQ(double*Q,int*N){
+    free(Q);
+}
+void freeS(int**S,int*N){
+    for(int i=0;i<=*N+1;i++){
+        free(S[i]);
+    }
+    free(S);
+}
+void freeW(double**W,int*N){
+    for(int i=0;i<=*N+1;i++){
+        free(W[i]);
+    }
+    free(W);
+}
+void freeC(double**C,int*N){
+    for(int i=0;i<=*N+1;i++){
+        free(C[i]);
+    }
+    free(C);
+}
+
 //主函数
 int main(int argc,char**argv){
     int N;//使用N来存储实节点的个数
@@ -156,6 +181,7 @@ int main(int argc,char**argv){
     int **S=getS(&N);
     Optimal_BST(P,Q,W,C,S,&N);//最优二叉树求解
     PrintResult(W,C,S,&N);
+    freeP(P,&N);freeQ(Q,&N);freeS(S,&N);freeC(C,&N);freeW(W,&N);
     return 0;
 }
 
