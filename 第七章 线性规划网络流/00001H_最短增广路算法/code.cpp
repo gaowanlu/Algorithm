@@ -15,7 +15,8 @@ bool looked[MAXNODESIZE];//访问数组:记录节点是否已经访问过了
 int nodeSize,edgeSize;//节点个数与边个数
 
 bool bfs(int snode,int enode);//bfs找可增广路
-int EK(int snode,int enode);//找最短增广路具体算法：对实流网络以及残余网络的操作
+int EK(int snode,int enode);
+//找最短增广路具体算法：对实流网络以及残余网络的操作
 void print();//输出实流网络
 
 int main(void){
@@ -44,6 +45,8 @@ bool bfs(int snode,int enode){
     queue<int>Queue;
     //源点设为已访问
     looked[snode]=true;
+    //源点入队列
+    Queue.push(snode);
     while(!Queue.empty()){//如果队列不为空则bfs
         int now=Queue.front();
         Queue.pop();
@@ -62,7 +65,7 @@ bool bfs(int snode,int enode){
 }
 //找最短增广路具体算法：对实流网络以及残余网络的操作
 int EK(int snode,int enode){
-    int v,w,d,maxflow;//v:  w:  d:可增广路的可增广量  maxflow:最大流量
+    int v,w,d,maxflow;//v--->w  d:可增广路的可增广量  maxflow:最大流量
     maxflow=0;//初始化最大流值
     while(bfs(snode,enode)){//不断更新网络，以达到不再可增广
         v=enode;
@@ -102,7 +105,7 @@ void print(){
     for(int i=1;i<=nodeSize;i++){
         cout<<"v"<<i;
         for(int j=1;j<=nodeSize;j++){
-            cout<<realFlowNetwork[i][j]<<" ";
+            cout<<"      "<<realFlowNetwork[i][j];
         }
         cout<<"\n";
     }
