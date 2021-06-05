@@ -26,7 +26,7 @@
 #include<algorithm>
 using namespace std;
 
-const int INF=(1<<30)-1;//正无穷
+const int INF=1000000;//正无穷
 const int NODESIZE=100;//结点最大个数
 const int EDGESIZE=10000;//最大边数
 int top;//当前边下标
@@ -154,6 +154,7 @@ bool SPFA(int s,int t,int n){
     queue<int>qu;//队列
     memset(vis,false,sizeof(vis));//标记结点是否已经访问过了
     memset(c,0,sizeof(c));//入队次数
+    memset(pre,-1,sizeof(pre));//前驱数组初始化为-1
     //距离初始化:源点到各个结点的最短距离
     for(int i=1;i<=n;i++){
         dist[i]=INF;
