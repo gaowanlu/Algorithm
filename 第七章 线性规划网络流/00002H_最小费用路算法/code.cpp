@@ -130,8 +130,8 @@ int MCMF(int s,int t,int n){
     mincost=0;//maxflow为网络当前最大流量，mincost为网络当前最小费用
     while(SPFA(s,t,n)){//有从s到t的最小费用路
         d=INF;//初始化增流量
-        cout<<"增广路径: "<<t;
-        for(i=pre[t];i!=-1;i=pre[E[i^1].v]){
+        cout<<"增广路径: "<<t;               //             i       i^1     i       i+1            i      i+1=i^1   i    i-1=i^1
+        for(i=pre[t];i!=-1;i=pre[E[i^1].v]){//i=pre[u.v] u---->v u<----v u---->v u<---v,通俗些就是u-->v就v<---u   v<--u u-->v
             d=min(d,E[i].cap-E[i].flow);//迭代找最小可增量
             cout<<"--"<<E[i^1].v;
         }
