@@ -1,0 +1,22 @@
+输入元素个数
+5
+输入元素
+1
+2
+3
+4
+5
+1 2 3 4 5 lmax=4
+gaowanlu@DESKTOP-QDLGRDB:/mnt/c/Users/gaowanlu/Desktop/Algorithm/第一章 算法之美/00007H_求第k大元素$ ./code
+输入元素个数
+1
+输入元素
+1
+1 lmax=1
+gaowanlu@DESKTOP-QDLGRDB:/mnt/c/Users/gaowanlu/Desktop/Algorithm/第一章 算法之美/00007H_求第k大元素$ ./code
+输入元素个数
+2
+输入元素
+1
+2
+1 2 lmax=1
