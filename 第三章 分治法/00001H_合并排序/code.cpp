@@ -3,49 +3,54 @@
 using namespace std;
 struct Data{
 	int flag;
-};
+};  
+
+
 void MergeFunction(struct Data*list,int low,int middle,int high){
-	//ÉêÇë¸¨Öú¿Õ¼ä
+	//ï¿½ï¿½ï¿½ë¸¨ï¿½ï¿½ï¿½Õ¼ï¿½
 	int size=high-low;
 	struct Data*space=(struct Data*)malloc(sizeof(struct Data)*size);
 	int i=low,j=middle+1;
 	int now=0;
 	while(i<=middle||j<=high){
 		if(i<=middle&&j<=high){
-			//±È½Ïi j flag
+			//ï¿½È½ï¿½i j flag
 			if(list[i].flag<list[j].flag){
 				space[now++]=list[i++];
 			}else{
 				space[now++]=list[j++];
 			} 
-		}else if(i<=middle){//iµü´úÈ«×°Èëspace 
+		}else if(i<=middle){//iï¿½ï¿½ï¿½ï¿½È«×°ï¿½ï¿½space 
 			space[now++]=list[i++]; 
-		}else{//jµü´ú×°Èëspace 
+		}else{//jï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½space 
 			space[now++]=list[j++];
 		}
 	}
-	//½«spaceÄÚµÄÄÚÈÝ×°ÈëÔ­À´ÁÐ±íÄÚ
+	//ï¿½ï¿½spaceï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½×°ï¿½ï¿½Ô­ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½
 	for(i=low;i<=high;i++){
 		list[i]=space[i-low];
 	} 
 	free(space);
 }
+
+
 void MergeSort(struct Data*list,int low,int high){
-	if(low>=high){//=ËµÃ÷Ö»ÓÐÒ»¸öÔªËØ²»ÓÃÅÅÐò 
+	if(low>=high){//=Ëµï¿½ï¿½Ö»ï¿½ï¿½Ò»ï¿½ï¿½Ôªï¿½Ø²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 
 		return;
 	}
 	int middle=(low+high)/2;
-	//¶Ômiddle×ó±ßÅÅÐò
+	//ï¿½ï¿½middleï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	MergeSort(list,low,middle);
-	//¶ÔmiddleÓÒ±ßÅÅÐò 
+	//ï¿½ï¿½middleï¿½Ò±ï¿½ï¿½ï¿½ï¿½ï¿½ 
 	MergeSort(list,middle+1,high);
-	//ºÏ²¢
+	//ï¿½Ï²ï¿½
 	MergeFunction(list,low,middle,high);
 }
+
 int main(int argc,char**argv){
 	struct Data list[5]={{34},{5},{2},{7},{10}};
 	MergeSort(list,0,4);
-	//Êä³ö
+	//ï¿½ï¿½ï¿½
 	for(int i=0;i<5;i++){
 		cout<<" "<<list[i].flag;
 	} 
